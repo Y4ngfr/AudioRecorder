@@ -19,6 +19,8 @@ int saveRecordingAudio(char* directory, AudioDevice* recordingDevice, Uint32 buf
         return -1;
     }
 
+    printf("%s\n", path);
+
     memset(&sfInfo, 0, sizeof(SF_INFO));
 
     sfInfo.channels = recordingDevice->obtainedSpec.channels;
@@ -89,6 +91,7 @@ char* getDateAndTimeString()
     char *dateBuffer, *millisseconds;
 
     dateBuffer = (char*)malloc(27*sizeof(char));
+    memset(dateBuffer, '\0', 27);
 
     if(dateBuffer == NULL){
         printf("Erro ao alocar string de data e hora\n");
@@ -98,7 +101,14 @@ char* getDateAndTimeString()
     time(&seconds);
     dateAndTime = localtime(&seconds);
 
-    SDL_itoa(dateAndTime->tm_mday, dateBuffer, 10);
+    if(dateAndTime->tm_mday < 10)
+    {
+        dateBuffer[0] = '0';
+        SDL_itoa(dateAndTime->tm_mday, dateBuffer+1, 10);
+    }
+    else{
+        SDL_itoa(dateAndTime->tm_mday, dateBuffer, 10);
+    }
 
     dateBuffer[2] = '-';
 
