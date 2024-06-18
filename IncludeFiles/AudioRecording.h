@@ -1,12 +1,16 @@
-#ifndef _WAVRECORDER_H
-#define _WAVRECORDER_H
+#ifndef _AUDIORECORDING_H
+#define _AUDIORECORDING_H
+
+#include <SDL2/SDL.h>
+#include <SDL2/SDL_main.h>
+#include <SDL2/SDL_audio.h>
 
 /**
  * Estrutura que armazena os dados brutos do áudio gravado
 */
 typedef struct AudioData{
     Uint8* buffer; /** Buffer que contém as amostras do áudio */
-    Uint32 position; /** Valor usado como posição do do buffer. Ex: buffer[position] */
+    Uint32 position; /** Valor usado como posição do buffer. Ex: buffer[position] */
 } AudioData;
 
 /**

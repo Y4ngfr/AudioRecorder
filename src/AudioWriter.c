@@ -3,8 +3,8 @@
 #include <time.h>
 #include <SDL2/SDL.h>
 #include <sndfile.h>
-#include "WAVRecorder.h"
-#include "WAVAudioWriter.h"
+#include "../IncludeFiles/AudioRecording.h"
+#include "../IncludeFiles/AudioWriter.h"
 
 int saveRecordingAudio(char* directory, AudioDevice* recordingDevice, Uint32 bufferSize)
 {
@@ -56,7 +56,6 @@ char* getPathString(char* directory)
 {
     char* fullPath, *dateTimeString;
     int pathStringSize;
-
 
     dateTimeString = getDateAndTimeString();
 

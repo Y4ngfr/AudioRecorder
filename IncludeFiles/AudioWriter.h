@@ -1,5 +1,8 @@
-#ifndef _WAVAUDIOWRITER_H
-#define _WAVAUDIOWRITER_H
+#ifndef _AUDIOWRITER_H
+#define _AUDIOWRITER_H
+
+#include <sndfile.h>
+#include "AudioRecording.h"
 
 /**
  * Salva o(s) audio(s) gravado(s) em formato WAV
