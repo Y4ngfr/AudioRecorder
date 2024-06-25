@@ -8,7 +8,7 @@
 /**
  *  Executa o gravador com base nos argumentos de inputData
 */
-int runGravador(RecordingParams *inputData);
+int runRecorder(RecordingParams *inputData);
 
 /**
  *  Função de thread que espera o usuário apertar enter para encerrar a gravação (função de uso interno)

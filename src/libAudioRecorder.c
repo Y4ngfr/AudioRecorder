@@ -1,6 +1,6 @@
 #include "../IncludeFiles/libAudioRecorder.h"
 
-int runGravador(RecordingParams *inputData)
+int runRecorder(RecordingParams *inputData)
 {
     AudioDevice *recordingDevice;
     Uint32 byteRate, allocationSize;

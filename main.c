@@ -9,7 +9,7 @@ int main(int argc, char* argv[])
         exit(1);
     }
 
-    runGravador(&inputData);
+    runRecorder(&inputData);
 
     return 0;
 }
