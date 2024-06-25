@@ -143,7 +143,7 @@ int verifyInputData(RecordingParams* inputData)
             return -1;
         }
 
-        if(inputData->directory)
+        if(inputData->directory == NULL)
         {
             printf("Erro: Argumento de diretório inválido\n");
             return -1;
