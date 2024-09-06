@@ -4,8 +4,8 @@
 all: Criar Mover CriarExecutavel MoverExecutavel
 
 Criar:
-	if [ -a /usr/local/include/libAudioRecorder ] ; then \
-		mkdir /usr/local/include/libAudioRecorder ; \
+	if [ ! -e /usr/local/include/libAudioRecorder ] ; then \
+		sudo mkdir /usr/local/include/libAudioRecorder ; \
 	fi
 
 Mover: Compilar CriarBibliotecaEstatica
