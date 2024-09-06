@@ -1,4 +1,7 @@
 #include "../IncludeFiles/libAudioRecorder.h"
+#include <signal.h>
+
+int endRecording = 0;
 
 int runRecorder(RecordingParams *inputData)
 {
@@ -6,7 +9,6 @@ int runRecorder(RecordingParams *inputData)
     Uint32 byteRate, allocationSize;
     Uint8* audioBuffer;
     int repetitions;
-    int endRecording;
 
     if(verifyInputData(inputData) < 0){
         return -1;
@@ -48,9 +50,9 @@ int runRecorder(RecordingParams *inputData)
     }
 
     repetitions = inputData->repetitions;
-    endRecording = 0;
 
-    SDL_Thread *thread = SDL_CreateThread(threadWaitForInput, "thread", &endRecording);
+    SDL_Thread *thread = SDL_CreateThread(threadWaitForInput, "thread", NULL);
+    signal(SIGINT, sighandler);
 
     do{
         Uint32 bufferLength;
@@ -83,14 +85,14 @@ int runRecorder(RecordingParams *inputData)
     return 0;
 }
 
-int threadWaitForInput(void *argData)
+int threadWaitForInput()
 {
     while(getchar() != '\n')
     {
         SDL_Delay(10);
     }
 
-    *((int*)argData) = 1;
+    endRecording = 1;
 
     return 0;
 }
@@ -151,4 +153,9 @@ int verifyInputData(RecordingParams* inputData)
     }
 
     return 0;
+}
+
+void sighandler()
+{
+    endRecording = 1;
 }

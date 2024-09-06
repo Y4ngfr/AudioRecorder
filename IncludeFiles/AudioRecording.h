@@ -2,8 +2,6 @@
 #define _AUDIORECORDING_H
 
 #include <SDL2/SDL.h>
-#include <SDL2/SDL_main.h>
-#include <SDL2/SDL_audio.h>
 
 /**
  * Estrutura que armazena os dados brutos do áudio gravado

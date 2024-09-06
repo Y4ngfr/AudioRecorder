@@ -13,7 +13,7 @@ int runRecorder(RecordingParams *inputData);
 /**
  *  Função de thread que espera o usuário apertar enter para encerrar a gravação (função de uso interno)
 */
-int threadWaitForInput(void *argData);
+int threadWaitForInput();
 
 /**
  * Imprime uma lista dos dispositivos de gravação detectados precedidos pelo seu indice
@@ -29,5 +29,7 @@ void printHelpMessage();
  * Verifica se os campos estão corretamente preenchidos
 */
 int verifyInputData(RecordingParams* inputData);
+
+void sighandler();
 
 #endif
