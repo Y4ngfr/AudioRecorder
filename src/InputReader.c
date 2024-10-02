@@ -48,24 +48,15 @@ int readInput(int argc, char* argv[], RecordingParams* inputData)
                 
             case 't':
             {
-                char *auxarg;
+                char auxarg[5];
 
                 if(strlen(optarg) <= 0){
                     printf("Erro na opção -t, não foi possível obter valor do parâmetro\n");
                     return -1;
                 }
 
-                auxarg = (char*)malloc(strlen(optarg)*sizeof(char));
-
-                if(auxarg == NULL){
-                    printf("Erro na opção -t: impossível alocar memória\n");
-                    return -1;
-                }
-
                 sprintf(auxarg, "%.2f", strtod(optarg, NULL));
                 inputData->recordingTime = strtod(auxarg, NULL);
-
-                free(auxarg);
 
                 if(inputData->recordingTime == 0){
                     printf("Erro na opção -t: argumento inválido `%s`\n", optarg);
@@ -82,7 +73,6 @@ int readInput(int argc, char* argv[], RecordingParams* inputData)
                 int isZero;
 
                 inputData->repetitions = atoi(optarg);
-
                 isZero = !strcmp(optarg, "0");
 
                 if(inputData->repetitions == 0 && !isZero){
@@ -100,7 +90,6 @@ int readInput(int argc, char* argv[], RecordingParams* inputData)
                 int isZero;
 
                 inputData->deviceIndex = atoi(optarg);
-
                 isZero = !strcmp(optarg, "0");
 
                 if(inputData->deviceIndex == 0 && !isZero){
@@ -116,7 +105,6 @@ int readInput(int argc, char* argv[], RecordingParams* inputData)
             case 'o':
             {
                 inputData->directory = optarg;
-
                 optO = 1;
 
                 break;
@@ -124,13 +112,10 @@ int readInput(int argc, char* argv[], RecordingParams* inputData)
 
             case '?':
             {
-                // Caso getopt não reconheça uma opção irá guardar essa opção em optopt
                 if(isprint(optopt)){ // Verifica se o caractere é imprimível
-                    // Se for, então apenas a opção não é reconhecida
                     printf("Opção `-%c` não reconhecida\n", optopt);
                 }
                 else{
-                    // Se o caractere não for imprimível:
                     printf("Caractere `\\x%x` não reconhecido\n", optopt);
                 }
 

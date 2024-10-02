@@ -63,9 +63,9 @@ char* getPathString(char* directory)
         return NULL;
     }
 
-    pathStringSize = strlen(directory) + strlen("/audio");
+    pathStringSize = strlen(directory) + strlen("/audio ");
 
-    fullPath = (char*)malloc((pathStringSize + strlen(dateTimeString)) + 4 * sizeof(char));
+    fullPath = (char*)malloc((pathStringSize + strlen(dateTimeString) + 5) * sizeof(char));
 
     if(fullPath == NULL)
     {
@@ -182,10 +182,9 @@ char* getMillisseconds()
     float value;
 
     value = (float)clock() / CLOCKS_PER_SEC;
-
     length = snprintf(NULL, 0, "%f", value);
 
-    aux = (char*)malloc(length*sizeof(char));
+    aux = (char*)malloc((length+1)*sizeof(char));
 
     if(aux == NULL){
         return NULL;

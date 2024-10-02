@@ -3,6 +3,8 @@
 #include <SDL2/SDL.h>
 #include "../IncludeFiles/AudioRecording.h"
 
+// Baseado em https://gist.github.com/andraantariksa/f5e6d848364b11a425625ec7fbbfc187
+
 int openRecordingDevice(AudioDevice** recordingDevice, int indexOfRecordingDevice)
 {
     SDL_AudioSpec *desiredSpecPtr, *obtainedSpecPtr;

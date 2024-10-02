@@ -17,10 +17,10 @@ CriarBibliotecaEstatica: Compilar
 	ranlib libAudioRecorder/libAudioRecorder.a
 
 Compilar:
-	gcc -c src/AudioRecording.c -o objects/AudioRecording.o
-	gcc -c src/AudioWriter.c -o objects/AudioWriter.o
-	gcc -c src/libAudioRecorder.c -o objects/libAudioRecorder.o
-	gcc -c src/InputReader.c -o objects/InputReader.o
+	gcc -c src/AudioRecording.c -g -o objects/AudioRecording.o
+	gcc -c src/AudioWriter.c -g -o objects/AudioWriter.o
+	gcc -c src/libAudioRecorder.c -g -o objects/libAudioRecorder.o
+	gcc -c src/InputReader.c -g -o objects/InputReader.o
 
 CriarExecutavel:
 	gcc main.c src/* -g -o audioRecorder -lSDL2 -lsndfile
