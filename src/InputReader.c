@@ -56,9 +56,10 @@ int readInput(int argc, char* argv[], RecordingParams* inputData)
                 }
 
                 sprintf(auxarg, "%.2f", strtod(optarg, NULL));
+
                 inputData->recordingTime = strtod(auxarg, NULL);
 
-                if(inputData->recordingTime == 0){
+                if(inputData->recordingTime == 0 || strtod(optarg, NULL) <= 0){
                     printf("Erro na opção -t: argumento inválido `%s`\n", optarg);
                     return -1;
                 }
@@ -75,7 +76,7 @@ int readInput(int argc, char* argv[], RecordingParams* inputData)
                 inputData->repetitions = atoi(optarg);
                 isZero = !strcmp(optarg, "0");
 
-                if(inputData->repetitions == 0 && !isZero){
+                if(inputData->repetitions == 0 && !isZero || atoi(optarg) < 0){
                     printf("Erro na opção -r: argumento inválido `%s`\n", optarg);
                     return -1;
                 }
@@ -92,7 +93,7 @@ int readInput(int argc, char* argv[], RecordingParams* inputData)
                 inputData->deviceIndex = atoi(optarg);
                 isZero = !strcmp(optarg, "0");
 
-                if(inputData->deviceIndex == 0 && !isZero){
+                if(inputData->deviceIndex == 0 && !isZero || atoi(optarg) < 0){
                     printf("Erro na opção -i: argumento inválido `%s`\n", optarg);
                     return -1;
                 }
