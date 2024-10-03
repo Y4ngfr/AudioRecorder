@@ -1,1 +1,0 @@
-./audioRecorder -i 999999 -t 2.99999999999999 -o recordings -r 2
