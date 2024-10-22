@@ -64,7 +64,7 @@ int runRecorder(RecordingParams *inputData)
         if(saveRecordingAudio(inputData->directory, recordingDevice,
         bufferLength) < 0)
         {
-            free(audioBuffer);
+            SDL_free(audioBuffer);
             closeDevice(recordingDevice);
             SDL_Quit();
             return -1;
@@ -74,11 +74,11 @@ int runRecorder(RecordingParams *inputData)
 
     } while(!endRecording && (repetitions != 0 || inputData->repetitions == 0));
 
-    if(inputData->repetitions == 0){
-        SDL_WaitThread(thread, NULL);
-    }
+    // if(inputData->repetitions == 0){
+        // SDL_WaitThread(thread, NULL);
+    // }
 
-    free(audioBuffer);
+    SDL_free(audioBuffer);
     closeDevice(recordingDevice);
     SDL_Quit();
 

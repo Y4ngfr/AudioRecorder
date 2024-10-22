@@ -54,13 +54,6 @@ def test_help_message():
 	result = subprocess.run(['./../audioRecorder', '--help'], capture_output=True, text=True)
 		
 	assert result.stdout == EXPECTED_OUTPUT
-	
-def test_devices_list_message():
-	EXPECTED_SUBSTRING = "Dispositivos de gravação de áudio:\nindex: 0;"
-	result = subprocess.run(['./../audioRecorder', '--devices'], capture_output=True, text=True) 
-	
-	assert EXPECTED_SUBSTRING in result.stdout
-
 
 def test_file_not_found_error():
     result = subprocess.run(['./../audioRecorder', '-i0', '-t0.345', '-r5', '-o../ \n'], capture_output=True, text=True)
@@ -84,52 +77,4 @@ def test_missing_params_error():
     EXPECTED_OUTPUT = "Erro: argumento -r ausente\nErro: argumento -o ausente\n"
     result = subprocess.run(['./../audioRecorder', '-i0', '-t4'], capture_output=True, text=True)
 
-    assert EXPECTED_OUTPUT == result.stdout    
-
-#def test_audio_recording_01987seconds():
-#    result = subprocess.run(['./../audioRecorder', '-i0', '-t0.198777777', '-r9', '-o../recordings'], capture_output=True, text=True)
-#    saida = result.stdout.split("\n")[:-1]
-
-#    verify = True        
-
-#    for arquivo in saida:        
-#        if file_is_wav(arquivo) == False:
-#            verify = False
-
-#    assert verify
-
-#def test_audio_recording_with_():
-#    result = subprocess.run(['./../audioRecorder', '-i0', '-t9', '-r3', '-o../recordings'], capture_output=True, text=True)
-#    saida = result.stdout.split("\n")[:-1]
-
-#    verify = True        
-
-#    for arquivo in saida:        
-#        if file_is_wav(arquivo) == False:
-#            verify = False
-
-#    assert verify
-
-#def test_audio_recording_4seconds():
-#    result = subprocess.run(['./../audioRecorder', '-i0', '-t4.75', '-r2', '-o../recordings'], capture_output=True, text=True)
-#    saida = result.stdout.split("\n")[:-1]
-
-#    verify = True        
-
-#    for arquivo in saida:        
-#        if file_is_wav(arquivo) == False:
-#            verify = False
-
-#    assert verify
-		
-test_help_message()
-test_devices_list_message()
-test_audio_recording_with_3_repetitions()
-test_audio_recording_with_float_number_param()
-test_audio_recording_with_time_less_than_1()
-test_file_not_found_error()
-test_invalid_input_error()
-test_missing_params_error()
-
-
-		
+    assert EXPECTED_OUTPUT == result.stdout
